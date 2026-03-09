@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Issues Tracker</title>
+         <!-- tailwind & daisy links -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="tailwind.css">
+         <!-- icon add -->
+    <link rel="shortcut icon" href="/assets/github-logo.png" type="image/x-icon">
+       <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: "Geist", sans-serif;
+        }
+    </style>
+
+         <!-- font awesome cdn links -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body class="bg-[#F8FAFC] pb-[50px]">
+         <!-- full navbar -->
+    <header class="sticky top-0 z-40">
+        <!-- Navbar -->
+        <div class="navbar bg-base-100 shadow px-4 lg:px-20">
+
+
+            <div class="flex-1 flex items-center gap-2">
+                
+                <img src="assets/github-logo.png" class="w-7">
+                <h1 class="hidden lg:block text-lg font-semibold"> GitHub Issues Tracker</h1>
+            </div>
+
+
+            <div class="flex-none flex items-center gap-2 md:gap-3">
+                <label class="input outline-none">
+                    <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none"
+                            stroke="currentColor">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.3-4.3"></path>
+                        </g>
+                    </svg>
+                    <input class=" w-[140px] md:w-[180px] lg:w-auto" id="input-scarich" type="search"
+                        placeholder="Search issues..." />
+                </label>
+
+                <button id="btn-Scarch"
+                    class="btn text-white border-0 bg-[#4f46e5] text-xs sm:text-sm md:text-base px-2 md:px-4">
+                    + New Issue
+                </button>
+
+            </div>
+
+        </div>
+    </header>
+    
+     <!-- all cards and all button -->
+    <main class="container mt-15 mx-auto">
+        <div class=" p-4 gap-3 mb-6 shadow-md flex  border-gray-200 border">
+
+            <button id="all-button" onclick="allcards(); showFilterIssueBtn('all-button')"
+                class="  btn  px-8 bg-[#422ad5] text-white ">All</button>
+            <button id="open-button" onclick="fetchOpenCards(); showFilterIssueBtn('open-button')"
+                class="  btn  px-7">Open</button>
+            <button id="close-button" onclick="fetchCloseCards(); showFilterIssueBtn('close-button')"
+                class="  btn  px-7 ">Closed</button>
+
+        </div>
+        <!-- all cards-->
+        <section class="bg-white p-4 shadow-md mb-16 border-gray-200 border">
+
+            <div class="flex items-center justify-between w-full gap-5 ">
+
+                <div class="flex items-center gap-2">
+                    <img src="/assets/Aperture.png" alt="" class="p-2 bg-blue-200 rounded-full">
+
+                    <div>
+                        <h2 id="issus-count" class="font-bold text-lg">0 Issues</h2>
+                        <p class="text-sm text-gray-500">
+                            Track and manage your project issues
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 text-sm">
+                    <span class="flex items-center gap-1">
+                        <span class="w-2 h-2 bg-green-500 rounded-full"></span>Open</span>
+
+                    <span class="flex items-center gap-1">
+                        <span class="w-2 h-2 bg-purple-500 rounded-full"></span>Closed</span>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- //.......lodding kaj korbe ................. all button card dainamik..-->
+
+        <div id="spinner-div" class="flex justify-center items-center min-h-60 hidden">
+            <span class="loading loading-bars loading-xl"></span>
+        </div>
+
+        <!-- //alll -->
+        <section id="all-card" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 px-2 md:px-6 lg:px-0 ">
+
+        </section>
+    </main>
+
+         <!-- all modal -->
+    <dialog id="my_modal_1" class="modal">
+        <div class="modal-box">
+            <div id="modal-content">
+
+            </div>
+        </div>
+    </dialog>
+
+
+    <script src="card.js"></script>
+</body>
+
+</html>
+
