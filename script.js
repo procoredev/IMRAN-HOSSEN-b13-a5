@@ -18,7 +18,7 @@ loginbtn.addEventListener('click',function (){
       //     alert("Login Success")
           
     
-          window.location.assign("/card.html")
+          window.location.assign("card.html")
 
  }else{
        // folse  alert >> return
